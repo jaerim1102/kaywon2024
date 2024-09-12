@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <style>
+      .toast {
+         opacity: 0;
+         width: 300px;
+         height: 100px;
+         background: palegoldenrod;
+         font-size: 20px;
+      }
+
+      .toast.active {
+         opacity: 1;
+      }
+   </style>
+</head>
+
+<body>
+   <button class="pop">pop</button>
+   <button class="close">close</button>
+   <div class="toast">안녕</div>
+
+   <script>
+      /*
+      1. class pop 버튼을 클릭하면
+      2. toast에 active class 추가
+      3. class가 close인 버튼을 클릭하면
+      4. toast에 active class 제거
+      */
+
+      document.querySelector('.pop').addEventListener('click', () => {
+         document.querySelector('.toast').classList.toggle('active')
+      })
+
+      document.querySelector('.close').addEventListener('click', () => {
+         document.querySelector('.toast').classList.remove('active')
+      })
+   </script>
+</body>
+
+</html>

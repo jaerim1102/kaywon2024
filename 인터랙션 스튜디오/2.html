@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>clickButton</title>
+</head>
+
+<body>
+   <button class="red">red!</button>
+   <button id="blue">blue!</button>
+
+   <script>
+      const redBtn = document.querySelector('.red')
+      const blueBtn = document.querySelector('#blue')
+
+      redBtn.addEventListener('click', () => {
+         document.body.style.background = 'red'
+      })
+
+      blueBtn.addEventListener('click', () => {
+         document.body.style.background = 'blue'
+      })
+   </script>
+</body>
+
+</html>

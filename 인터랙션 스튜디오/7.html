@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Add</title>
+   <style>
+      .box {
+         width: 100px;
+         height: 100px;
+         background: pink;
+      }
+
+      .box.add {
+         animation: change 1s ease-in;
+      }
+
+      @keyframes change {
+         0% {
+            border-radius: 0;
+            background: pink;
+         }
+
+         100% {
+            border-radius: 100px;
+            background: black;
+         }
+      }
+   </style>
+</head>
+
+<body>
+   <div class="box"></div>
+   <button class="add">add</button>
+   <button class="remove">remove</button>
+   <button class="toggle">toggle</button>
+
+   <script>
+      /*
+         1. class가 add인 버튼 변수 저장
+         2. class가 box인 div 변수 저장
+         3. add에다가 이벤트 걸기 > addEventListener > click
+         4. box에 add라는 class가 toggle된다.
+      */
+
+      const add = document.querySelector('.add')
+      const box = document.querySelector('.box')
+
+      add.addEventListener('click', () => {
+         box.classList.toggle('add');
+      })
+   </script>
+</body>
+
+</html>

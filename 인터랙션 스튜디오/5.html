@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>버튼 누르면?</title>
+   <style>
+      .box {
+         position: absolute;
+         top: 100px;
+         left: 100px;
+         width: 100px;
+         height: 100px;
+         background: aqua;
+         transition: all 1s;
+      }
+   </style>
+</head>
+
+<body>
+   <div class="box"></div>
+   <button>버튼</button>
+   <button>버튼</button>
+   <button>버튼</button>
+   <button>버튼</button>
+
+   <script>
+      /*
+         1. 버튼 무더기들을 가지고 온다 > querySelectorAll
+         2. .box를 변수에 저장한다
+         3. 버튼 무더기를 forEach를 돌려주고 각각에 addEventListener를 한다
+         4. 함수 > box width, height, top, left 값을 랜덤으로 200미만 숫자로 저장
+         5. .box에 style 먹인다.
+      */
+      const allBtn = document.querySelectorAll('button');
+      const box = document.querySelector('.box');
+
+      allBtn.forEach(item => {
+         item.addEventListener('click', () => {
+            let width1 = Math.floor(Math.random() * 200);
+            let height1 = Math.floor(Math.random() * 200);
+            let top1 = Math.floor(Math.random() * 200);
+            let left1 = Math.floor(Math.random() * 200);
+
+            box.style.width = `${width1}px`;
+            box.style.height = `${height1}px`;
+            box.style.top = `${top1}px`;
+            box.style.left = `${left1}px`;
+         });
+      });
+   </script>
+</body>
+
+</html>

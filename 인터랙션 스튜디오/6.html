@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>classList</title>
+   <style>
+      .box {
+         width: 100px;
+         height: 100px;
+         background-color: aqua;
+      }
+
+      .box.active {
+         animation: change 1s ease-in-out;
+      }
+
+      @keyframes change {
+         0% {
+            width: 100px;
+            height: 100px;
+            background: aqua;
+         }
+
+         100% {
+            width: 300px;
+            height: 300px;
+            background: pink;
+         }
+      }
+   </style>
+</head>
+
+<body>
+   <div class="box">box</div>
+   <script>
+      const box = document.querySelector('.box')
+      box.addEventListener('click', () => {
+         box.classList.toggle('active');
+      })
+   </script>
+</body>
+
+</html>

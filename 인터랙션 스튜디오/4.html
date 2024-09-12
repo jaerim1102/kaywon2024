@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <style>
+      .box {
+         width: 100px;
+         height: 100px;
+         background: aqua;
+         transition: all 1s;
+      }
+   </style>
+
+</head>
+
+<body>
+   <div class="box"></div>
+   <button id="width">width 바꾸기</button>
+
+   <script>
+      let widthNum = prompt('숫자 입력해')
+      const box = document.querySelector('.box')
+      const width = document.querySelector('#width')
+
+      width.addEventListener('click', () => {
+         box.style.width = `${widthNum}`
+      })
+      /*
+         1. .box와 #width를 변수에 저장한다.
+         2. #width에 addEventListener 붙는데 > click
+         3. .box의 width값이 widthNum으로 변한다.
+      */
+   </script>
+</body>
+
+</html>
