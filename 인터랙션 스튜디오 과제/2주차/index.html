@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>popup</title>
+
+   <style>
+      .toast {
+         opacity: 0;
+      }
+
+      .toast.active {
+         opacity: 1;
+      }
+   </style>
+   </style>
+</head>
+
+<body>
+   <div>
+      <div>
+         <button class="pop">열기</button>
+         <button class="close">닫기</button>
+      </div>
+      <img class="toast" src="./popup.png" alt="팝업 이미지" />
+   </div>
+
+   <script>
+      document.querySelector('.pop').addEventListener('click', () => {
+         document.querySelector('.toast').classList.toggle('active')
+      })
+
+      document.querySelector('.close').addEventListener('click', () => {
+         document.querySelector('.toast').classList.remove('active')
+      })
+   </script>
+</body>
+
+</html>

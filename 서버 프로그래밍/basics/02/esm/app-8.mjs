@@ -1,4 +1,4 @@
 import { hi as hello, goodbye as bye } from "./greeting.mjs";
 
-hello("홍길동");
-bye("홍길동");
+hello("김재림");
+bye("김재림");
