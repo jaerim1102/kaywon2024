@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body>
+   <input type="text" placeholder="이름을 입력하세요">
+   <button>로그인</button>
+   <h1></h1>
+
+   <script>
+      const input = document.querySelector('input[type="text"]')
+      const btn = document.querySelector('button')
+      const h1 = document.querySelector('h1')
+
+      btn.addEventListener('click', () => {
+         let name = input.value
+         if (name.length >= 2) {
+            h1.innerHTML = name + '님 안녕하세요'
+         } else {
+            alert('이름을 입력하지 않았습니다.')
+         }
+      })
+   </script>
+</body>
+
+</html>

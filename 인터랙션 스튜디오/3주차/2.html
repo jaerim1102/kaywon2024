@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body>
+   <input type="range" name="" id="">
+   <span class="num">50</span>
+   <script>
+      const range = document.querySelector('input[type="range"]')
+      const num = document.querySelector('.num')
+
+      range.addEventListener('change', () => {
+         num.innerHTML = range.value;
+
+         if (range.value > 50) {
+            document.body.style.background = 'aqua'
+         } else {
+            document.body.style.background = 'pink'
+         }
+      })
+   </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body>
+   <label>
+      <input type="radio" name="animal" value="cat">고양이
+   </label>
+   <label>
+      <input type="radio" name="animal" value="dog">개
+   </label>
+   <label>
+      <input type="radio" name="animal" value="ham">햄
+   </label>
+   <script>
+      const radio = document.querySelectorAll('input[type="radio"]')
+      radio.forEach(radio => {
+         radio.addEventListener('click', (e) => {
+            let value = event.target.value
+
+            switch (value) {
+               case 'cat':
+                  document.body.style.background = 'yellow'
+                  break;
+               case 'dog':
+                  document.body.style.background = 'orange'
+                  break;
+               case 'ham':
+                  document.body.style.background = 'pink'
+                  break;
+            }
+         })
+      })
+   </script>
+</body>
+
+</html>

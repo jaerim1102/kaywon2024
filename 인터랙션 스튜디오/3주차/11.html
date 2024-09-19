@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body>
+   <div id="wrap">
+      <div class="right">
+         <h1>은혜갚은 <strong class="name"></strong></h1>
+         <p>옛날 옛날 어느 마을에 <strong class="name"></strong>이 살았어요</p>
+         <p><strong class="name"></strong>은 <strong class="age"></strong>살이나 먹은 고양이였어요</p>
+         <p>몸무게가 <strong class="weight"></strong>kg나 나가는 뚱고양이였어요</p>
+      </div>
+   </div>
+   <div class="input">
+      <input type="text" class="input-name" placeholder="이름을 입력하세요">
+      <input type="number" class="input-age" placeholder="나이를 입력하세요">
+      <input type="number" class="input-weight" placeholder="몸무게를 입력하세요">
+      <button class="btn-submit">출력</button>
+   </div>
+
+   <script>
+
+      const nameBox = document.querySelectorAll('.name')
+      const ageBox = document.querySelector('.age')
+      const weightBox = document.querySelector('.weight')
+      const btn = document.querySelector('.btn-submit')
+      const name = document.querySelector('.input-name')
+      const age = document.querySelector('.input-age')
+      const weight = document.querySelector('.input-weight')
+
+      btn.addEventListener('click', () => {
+
+         nameBox.forEach(nameBox => {
+            nameBox.innerHTML = name.value
+         })
+         ageBox.innerHTML = age.value
+         weightBox.innerHTML = weight.value
+      })
+
+
+
+   </script>
+</body>
+
+</html>

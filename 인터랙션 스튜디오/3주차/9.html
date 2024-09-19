@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <style>
+      * {
+         margin: 0;
+         padding: 0;
+      }
+
+      ul {
+         display: flex;
+         list-style: none;
+         justify-content: space-between;
+      }
+
+      li {
+         width: calc(100%/3);
+      }
+   </style>
+</head>
+
+<body>
+   <ul></ul>
+
+   <script>
+      const img = ['./src/img_1.jpg', './src/img_2.jpg', './src/img_3.jpg']
+
+      const info = [
+         {
+            url: './src/img_1.jpg',
+            alt: '춘봉'
+         },
+         {
+            url: './src/img_2.jpg',
+            alt: '춘봉'
+         },
+         {
+            url: './src/img_3.jpg',
+            alt: '춘봉'
+         }
+
+      ];
+
+
+      const ul = document.querySelector('ul')
+      info.forEach(info => {
+         const li = document.createElement('li')
+         const img = document.createElement('img')
+
+         img.src = info.url
+         img.alt = info.alt
+
+         li.appendChild(img)
+         ul.appendChild(li)
+      })
+
+      // img.forEach(url => {
+      //    const li = document.createElement('li')
+      //    const img = document.createElement('img')
+
+      //    img.src = url
+      //    li.appendChild(img)
+      //    ul.appendChild(li)
+      // })
+   </script>
+</body>
+
+</html>

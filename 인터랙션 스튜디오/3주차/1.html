@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Title</title>
+   <style>
+      .box {
+         width: 100px;
+         height: 100px;
+         background: pink;
+      }
+   </style>
+</head>
+
+<body>
+   <div class="box"></div>
+   <script>
+      let inputNum = prompt('숫자 입력')
+      inputNum = parseInt(inputNum)
+      const box = document.querySelector('.box')
+
+      if (inputNum > 5) {
+         box.style.backgroundColor = 'tomato'
+      }
+   </script>
+</body>
+
+</html>
