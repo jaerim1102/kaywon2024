@@ -1,4 +1,4 @@
-// 버퍼 살펴보기 - 이진 데이터와 문자열 (결과 비교 파일 : 03\results\buffer.js)
+// 버퍼 살펴보기 - 이진 데이터와 문자열
 
 const fs = require("fs");
 
