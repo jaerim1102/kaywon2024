@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>4주차 과제</title>
+
+   <style>
+      body {
+         overflow: hidden;
+      }
+
+      .box {
+         position: absolute;
+         top: 100px;
+         left: 100px;
+         width: 415px;
+         height: 370px;
+         background: url('./2.png') no-repeat;
+         background-size: cover;
+         animation: gif 1s infinite steps(10), run 10s linear infinite;
+      }
+
+      @keyframes gif {
+         100% {
+            background-position: -4850px 0;
+         }
+      }
+
+      @keyframes run {
+         0% {
+            left: 0;
+         }
+
+         100% {
+            left: 100%;
+         }
+      }
+   </style>
+</head>
+
+<body>
+   <div class="box"></div>
+   <input type="range" class="fast" min="2" max="20" step="2">빠르기
+
+   <script>
+      const fast = document.querySelector('.fast')
+      const box = document.querySelector('.box')
+
+      box.style.animation = `gif 1s infinite steps(10), run ${fast.value}s linear infinite`;
+
+      fast.addEventListener('input', function () {
+         box.style.animation = `gif 1s infinite steps(10), run ${fast.value}s linear infinite`;
+         console.log(fast.value);
+      });
+
+   </script>
+</body>
+
+</html>

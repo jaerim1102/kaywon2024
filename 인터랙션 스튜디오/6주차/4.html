@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>4</title>
+   <style>
+      * {
+         margin: 0;
+         padding: 0;
+      }
+
+      ul {
+         list-style: none;
+      }
+
+      #wrap {
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+      }
+
+      .flip {
+         width: 200px;
+         height: 300px;
+         transition: all 1s;
+         transform-style: preserve-3d;
+      }
+
+      .flip:hover {
+         transform: rotateY(180deg);
+      }
+
+      .flip>div {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         position: absolute;
+         width: 100%;
+         height: 100%;
+         font-size: 3rem;
+      }
+
+      .front {
+         background: pink;
+      }
+
+      .back {
+         background: #2facff;
+         transform: rotateY(180deg) translate3d(0, 0, 3px);
+      }
+   </style>
+</head>
+
+<body>
+   <div id="wrap">
+      <ul>
+         <li class="flip">
+            <div class="front">front</div>
+            <div class="back">back</div>
+         </li>
+      </ul>
+   </div>
+
+</body>
+
+</html>

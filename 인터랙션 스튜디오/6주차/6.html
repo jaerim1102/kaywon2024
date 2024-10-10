@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>6</title>
+   <style>
+      * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+      }
+
+      body {
+         background: #0c0c0c;
+      }
+
+      .container {
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+      }
+
+      .card {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         width: 200px;
+         height: 400px;
+         box-shadow: 20px 50px rgba(0, 0, 0, .5);
+         border-radius: 15px;
+         background: rgba(255, 255, 255, .1);
+         border-top: 1px solid rgba(255, 255, 255, .5);
+         border-left: 1px solid rgba(255, 255, 255, .5);
+         backdrop-filter: blur(5px);
+         color: #fff;
+      }
+   </style>
+</head>
+
+<body>
+   <div class="container">
+      <div class="card">
+         <div class="content">
+            <h1>내 소원</h1>
+            <p>김도영이랑 사귀고 싶다...</p>
+         </div>
+      </div>
+   </div>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+   <script>
+      VanillaTilt.init(document.querySelector(".card"), {
+         max: 25,
+         speed: 400
+      });
+   </script>
+
+</body>
+
+</html>

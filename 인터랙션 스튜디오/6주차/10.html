@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body>
+   <svg width="150" height="150" viewBox="0 0  150 150">
+      <defs>
+         <path d="M20,20 20, 120 120, 120 120,20" id="move" />
+      </defs>
+      <g>
+         <animateMotion dur="15s" repeatCount="indefinite">
+            <mpath xlink:href="#move" />
+         </animateMotion>
+         <circle r="10" cx="5" cy="5" fill="blue" />
+      </g>
+   </svg>
+</body>
+
+</html>

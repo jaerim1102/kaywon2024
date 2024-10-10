@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>9</title>
+</head>
+
+<body>
+   <svg width="500" height="100">
+      <circle r="30" cx="50" cy="50" id="circle" stroke="red" stroke-width="4" />
+      <animate xlink:href="#circle" attributeName="cx" from="50" to="500" dur="1s" begin="click" fill="freeze" />
+      <animate xlink:href="#circle" attributeName="fill" from="aquamarine" to="hotpink" dur="1s" begin="click"
+         fill="freeze" />
+      <animate xlink:href="#circle" attributeName="stroke" from="red" to="blue" dur="1s" begin="click" fill="freeze" />
+      <animate xlink:href="#circle" attributeName="stroke-width" from="1" to="10" dur="1s" begin="click"
+         fill="freeze" />
+   </svg>
+</body>
+
+</html>
