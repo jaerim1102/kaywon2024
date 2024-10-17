@@ -1,16 +1,20 @@
 {
-  "name": "mycontacts",
+  "name": "contacts-manager",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "contacts manager",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "express": "^4.21.0",
+    "express-async-handler": "^1.2.0",
     "mongoose": "^8.7.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
   }
 }

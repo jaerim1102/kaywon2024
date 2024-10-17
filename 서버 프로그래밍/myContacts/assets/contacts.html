@@ -1,0 +1,44 @@
+<form id="contactForm">
+    <input type="text" id="name" placeholder="이름" required>
+    <input type="email" id="email" placeholder="이메일">
+    <input type="text" id="phone" placeholder="전화번호" required>
+    <button type="submit">연락처 추가</button>
+</form>
+
+<script>
+    document.getElementById('contactForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+
+        // 필수 입력값 확인
+        if (!name || !phone) {
+            alert('이름과 전화번호는 필수입니다.');
+            return;
+        }
+
+        try {
+            const response = await fetch('/contacts', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name, email, phone })
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                alert(errorData.error || '연락처 추가 중 오류가 발생했습니다.');
+            } else {
+                // 성공적으로 추가되면 폼 초기화
+                document.getElementById('contactForm').reset();
+                // 추가된 연락처를 테이블에 업데이트하는 로직 추가 가능
+            }
+        } catch (error) {
+            console.error('Error adding contact:', error);
+            alert('서버와의 통신에 문제가 발생했습니다.');
+        }
+    });
+</script>
