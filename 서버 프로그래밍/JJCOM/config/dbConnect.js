@@ -1,12 +1,12 @@
-const mongoose = require('mongoose');
-require('dotenv').config();
+const mongoose = require("mongoose");
 
 const dbConnect = async () => {
     try {
-        const connect = await mongoose.connect(process.env.DB_CONNECT);
-        console.log('DB Connected');
-    } catch (err) {
-        console.log('err');
+        await mongoose.connect("mongodb://localhost:27017/exhibitions"); // 불필요한 옵션 제거
+        console.log("DB Connected");
+    } catch (error) {
+        console.error("DB Connection Error: ", error);
+        process.exit(1);
     }
 };
 

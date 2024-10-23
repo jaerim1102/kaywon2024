@@ -1,0 +1,52 @@
+.exhibition-detail {
+   margin-left: 100px;
+   margin-top: 50px;
+}
+
+.poster-container {
+   display: flex;
+}
+
+.school {
+   font-size: 50px;
+   font-weight: 600;
+   margin-bottom: 10px;
+}
+
+.major {
+   font-size: 23px;
+   margin-bottom: 30px;
+
+}
+
+h1 {
+   font-size: 50px;
+}
+
+img {
+   border-radius: 30px;
+   width: 500px;
+   margin-right: 80px;
+   margin-bottom: 50px;
+}
+
+strong {
+   display: block;
+   margin-bottom: 10px;
+   font-size: 20px;
+}
+
+.description {
+   margin-top: 30px;
+   width: 1000px;
+   line-height: 200%;
+}
+
+.exhibition_location {
+   margin-top: 50px;
+   margin-bottom: 30px;
+}
+
+.back {
+   border-bottom: 1px solid #fff;
+}

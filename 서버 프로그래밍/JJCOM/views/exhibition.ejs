@@ -1,0 +1,18 @@
+<%- include('partials/header', { title: '전시 등록' , cssFile: 'exhibition' }) %>
+
+   <h1>전시 등록</h1>
+   <form id="exhibitionForm" action="/exhibitions" method="POST" enctype="multipart/form-data">
+      <input type="text" name="school" placeholder="학교명" required>
+      <input type="text" name="major" placeholder="학과" required>
+      <input type="text" name="exhibition_name" placeholder="전시 이름" required>
+      <input type="text" name="exhibition_location" placeholder="전시 장소" required>
+      <input type="date" name="start_date" required>
+      <input type="date" name="end_date" required>
+      <input type="time" name="exhibition_time" placeholder="전시 시간" required>
+      <textarea class="description" name="description" placeholder="전시 설명" required></textarea>
+
+      <input class="poster" type="file" name="poster" accept="image/*" required>
+      <button type="submit">전시 등록</button>
+   </form>
+
+   <%- include('partials/footer') %>

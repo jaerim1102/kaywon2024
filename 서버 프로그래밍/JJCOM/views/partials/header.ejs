@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="/css/header.css">
+   <title>
+      <%= title %>
+   </title>
+   <!-- 페이지별로 다르게 적용될 CSS 파일 -->
+   <% if (cssFile) { %>
+      <link rel="stylesheet" href="/css/<%= cssFile %>.css">
+      <% } %>
+</head>
+
+<body>
+   <header>
+      <nav>
+         <ul>
+            <li><a href="/exhibition">전시 등록</a></li>
+            <li><a href="/exhibitions">전시 목록</a></li>
+         </ul>
+      </nav>
+   </header>
+   <main>

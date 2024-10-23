@@ -1,0 +1,31 @@
+<%- include('partials/header', { title: exhibition.exhibition_name + ' - 전시 상세 정보' , cssFile: 'detail' }) %>
+
+   <div class="exhibition-detail">
+      <div class="school">
+         <%= exhibition.school %>
+      </div>
+      <div class="major">
+         <%= exhibition.major %>
+      </div>
+      <div class="poster-container">
+         <img src="<%= exhibition.poster %>" alt="포스터">
+         <div class="ex-container">
+            <h1>
+               <%= exhibition.exhibition_name %>
+            </h1>
+            <div class="description">
+               <%= exhibition.description %>
+            </div>
+            <div class="exhibition_location"><strong>전시 장소</strong>
+               <%= exhibition.exhibition_location %>
+            </div>
+            <div><strong>전시 일정</strong>
+               <%= exhibition.start_date.toLocaleDateString('ko-KR') %> ~ <%=
+                     exhibition.end_date.toLocaleDateString('ko-KR') %>
+            </div>
+         </div>
+      </div>
+      <a href="/exhibitions" class="back">뒤로가기</a>
+   </div>
+
+   <%- include('partials/footer') %>
