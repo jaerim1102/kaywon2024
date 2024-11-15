@@ -1,6 +1,7 @@
 <%- include('partials/header', { title: exhibition.exhibition_name + ' - 전시 상세 정보' , cssFile: 'detail' }) %>
 
    <div class="exhibition-detail">
+      <!-- 전시 상세 내용 -->
       <div class="school">
          <%= exhibition.school %>
       </div>
@@ -22,11 +23,12 @@
             <div><strong>전시 일정</strong>
                <%= exhibition.start_date.toLocaleDateString('ko-KR') %> ~ <%=
                      exhibition.end_date.toLocaleDateString('ko-KR') %>
-                     <%= exhibition.exhibition_time %>
-
             </div>
          </div>
       </div>
+
+      <!-- 수정 버튼 -->
+      <a href="/exhibitions/<%= exhibition._id %>/edit" class="edit-button">수정하기</a>
       <a href="/exhibitions" class="back">뒤로가기</a>
    </div>
 

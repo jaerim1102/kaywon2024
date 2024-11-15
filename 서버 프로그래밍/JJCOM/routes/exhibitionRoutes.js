@@ -3,10 +3,10 @@ const router = express.Router();
 const {
    getAllExhibitions,
    createExhibition,
-   getExhibition,
+   getExhibitionDetail,
+   getExhibitionForEdit, // 수정 페이지로 이동
    updateExhibition,
    deleteExhibition,
-   getExhibitionDetail, // 여기서 함수가 제대로 불러와져야 함
    upload
 } = require("../controllers/exhibitionController");
 
@@ -16,7 +16,13 @@ router.route("/").get(getAllExhibitions).post(upload.single("poster"), createExh
 // 전시 상세 페이지
 router.get("/:id/detail", getExhibitionDetail);
 
-// 전시 삭제 및 업데이트 라우트 추가
-router.route("/:id").get(getExhibition).put(updateExhibition).delete(deleteExhibition);
+// 수정 페이지로 이동
+router.get("/:id/edit", getExhibitionForEdit);
+
+// 전시 수정
+router.post("/:id", upload.single("poster"), updateExhibition);
+
+// 전시 삭제
+router.delete("/:id", deleteExhibition);
 
 module.exports = router;

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin:0;
+            padding:0;
+        }
+        #wrap {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width:100%;
+            height:100vh;
+            background: red;
+        }
+        ul {
+            list-style: none;
+            display: flex;
+            font-size:40px;
+        }
+        li {
+            padding:40px;
+        }
+        .screen {
+            width:300px;
+            height:300px;
+            background:#000;
+        }
+        .screen.num1 {
+            background:pink;
+        }
+        .screen.num2 {
+            background:blue;
+        }
+        .screen.num3 {
+            background:greenyellow;
+        }
+
+        @keyframes large {
+            30% {
+                width:300px;
+                height:300px;
+            }
+            100% {
+                width:100%;
+                height:100vh;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <div class="screen"></div>
+</div>
+<script>
+    const lists = document.querySelectorAll('li')
+    const screen = document.querySelector('.screen')
+
+    lists.forEach((list, index) => {
+
+        list.addEventListener('click', () => {
+
+            screen.className = 'screen'
+            screen.classList.add(`num${index + 1}`)
+            screen.style.animation = 'large 1s forwards'
+        })
+    })
+</script>
+</body>
+</html>

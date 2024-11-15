@@ -42,16 +42,16 @@
 <body>
    <h1><i class="fa-solid fa-address-card"></i>Contacts Page</h1>
    <h2>
-      <%=heading %>
+      <%= heading %>
    </h2>
    <ul>
-      <% users.forEach(user=> {%>
+      <% users.forEach(user=> { %>
          <li>
-            <strong>Name:</strong>
+            <strong>Name: </strong>
             <%= user.name %>
          </li>
          <li>
-            <strong>E-mail:</strong>
+            <strong>E-mail: </strong>
             <%= user.email %>
          </li>
          <% }); %>

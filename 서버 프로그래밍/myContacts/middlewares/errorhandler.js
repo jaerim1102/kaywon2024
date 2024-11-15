@@ -4,41 +4,39 @@ const errorhandler = (err, req, res, next) => {
         case 400:
             res.status(status).json({
                 title: "Bad Request",
-                message: err.message
+                message: err.message,
             });
             break;
         case 401:
             res.status(status).json({
                 title: "Unauthorized",
-                message: err.message
+                message: err.message,
             });
             break;
         case 403:
             res.status(status).json({
                 title: "Forbidden",
-                message: err.message
+                message: err.message,
             });
             break;
         case 404:
             res.status(status).json({
                 title: "Not Found",
-                message: err.message
+                message: err.message,
             });
             break;
-            // 500: 서버 오류
         case 500:
             res.status(status).json({
                 title: "Internal Server Error",
-                message: err.message
+                message: err.message,
             });
             break;
         default:
             res.status(status).json({
-                title: "Error",
-                message: err.message
+                message: "No Error!",
             });
             break;
     }
-}
+};
 
 module.exports = errorhandler;

@@ -17,4 +17,28 @@
          <% }); %>
    </div>
 
+   <script>
+      async function deleteExhibition(id) {
+         if (confirm("정말로 이 전시를 삭제하시겠습니까?")) {
+            try {
+               const response = await fetch(`/exhibitions/${id}`, {
+                  method: 'DELETE',
+                  headers: { 'Content-Type': 'application/json' },
+               });
+
+               if (response.ok) {
+                  alert("전시가 삭제되었습니다.");
+                  window.location.reload(); // 삭제 후 페이지 새로고침
+               } else {
+                  alert("전시 삭제에 실패했습니다.");
+               }
+            } catch (error) {
+               console.error("전시 삭제 오류:", error);
+               alert("전시 삭제 중 오류가 발생했습니다.");
+            }
+         }
+      }
+   </script>
+
+
    <%- include('partials/footer') %>

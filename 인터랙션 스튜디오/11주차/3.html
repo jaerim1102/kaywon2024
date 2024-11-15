@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #canvas {
+            border:1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+
+<script>
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+
+    canvas.width = window.innerWidth - 50
+    canvas.height = window.innerHeight - 50
+
+    var rect = {
+        x : 10,
+        y : 50,
+        width: 50,
+        height : 50,
+        dx : Math.random() * 10 - 5,
+        dy : Math.random() * 10 - 5,
+        draw() {
+            ctx.fillStyle = 'red'
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+        }
+    }
+
+
+
+    function move() {
+        requestAnimationFrame(move)
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+        if(rect.x >= canvas.width - rect.width || rect.x <= 0){
+            rect.dx *= -1;
+        }
+        if(rect.y >= canvas.height - rect.height || rect.y <= 0){
+            rect.dy *= -1;
+        }
+
+        rect.x += rect.dx
+        rect.y += rect.dy
+
+        rect.draw()
+
+    }
+    move()
+
+
+</script>
+</body>
+</html>

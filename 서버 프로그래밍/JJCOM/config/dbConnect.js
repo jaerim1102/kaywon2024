@@ -2,11 +2,10 @@ const mongoose = require("mongoose");
 
 const dbConnect = async () => {
     try {
-        await mongoose.connect("mongodb://localhost:27017/exhibitions"); // 불필요한 옵션 제거
-        console.log("DB Connected");
+        await mongoose.connect("mongodb://localhost:27017/exhibitions");
+        console.log("MongoDB 연결 성공");
     } catch (error) {
-        console.error("DB Connection Error: ", error);
-        process.exit(1);
+        console.error("MongoDB 연결 실패:", error);
     }
 };
 

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #canvas {
+            border:1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas" width="400" height="400"></canvas>
+
+<script>
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+
+    var img = new Image()
+    img.src = 'img/dino.png'
+
+    var rect = {
+        x : 10,
+        y : 50,
+        width: 50,
+        height : 50,
+        draw() {
+            ctx.fillStyle = 'red'
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+            ctx.drawImage(img, 10, 50, 50, 50)
+        }
+    }
+
+    img.addEventListener('load', () => {
+        rect.draw();
+    })
+
+</script>
+</body>
+</html>

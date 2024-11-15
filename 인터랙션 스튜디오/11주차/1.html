@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #canvas {
+            border:1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas" width="400" height="400"></canvas>
+
+<script>
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+
+    var rect = {
+        x : 10,
+        y : 50,
+        width: 50,
+        height : 50,
+        draw() {
+            ctx.fillStyle = 'red'
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+        }
+    }
+
+    var rect2 = {
+        x : 80,
+        y : 50,
+        width: 50,
+        height : 50,
+        draw() {
+            ctx.strokeStyle  = 'blue'
+            ctx.strokeRect(this.x, this.y, this.width, this.height);
+        }
+    }
+
+    var rect3 = {
+        x : 40,
+        y : 50,
+        width: 50,
+        height : 50,
+        draw() {
+            ctx.clearRect(this.x, this.y, this.width, this.height);
+        }
+    }
+
+    rect.draw()
+    rect2.draw()
+    rect3.draw()
+
+</script>
+</body>
+</html>
