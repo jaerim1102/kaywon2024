@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>파일 업로드</title>
+</head>
+
+<body>
+   <form action="/upload" method="post" enctype="multipart/form-data">
+      <label for="file">파일 선택:</label>
+      <input type="file" id="file" name="file" required />
+      <button type="submit">업로드</button>
+   </form>
+
+   <br>
+
+   <% if (typeof uploadedFile !=='undefined' ) {%>
+      <h2>업로드된 파일:</h2>
+      <p>파일명: <%= uploadedFile.filename %>
+      </p>
+      <p>파일 경로: <%= uploadedFile.path %>
+      </p>
+
+      <h3>업로드된 이미지:</h3>
+      <img src="/uploads/<%= uploadedFile.filename %>" alt="">
+      <% } %>
+</body>
+
+</html>

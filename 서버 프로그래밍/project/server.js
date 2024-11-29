@@ -9,7 +9,7 @@ const port = 3000;
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-const uploadDir = path.join(__dirname, 'uploadss');
+const uploadDir = path.join(__dirname, 'uploads');
 if (!fs.existsSync(uploadDir)) {
    fs.mkdirSync(uploadDir);
 }
