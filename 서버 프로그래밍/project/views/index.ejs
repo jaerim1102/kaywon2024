@@ -9,22 +9,33 @@
 
 <body>
    <form action="/upload" method="post" enctype="multipart/form-data">
+      <label for="title">제목:</label>
+      <input type="text" id="title" name="title" placeholder="제목을 입력하세요" required /><br><br>
+
+      <label for="body">내용:</label>
+      <textarea id="body" name="body" placeholder="내용을 입력하세요" required></textarea><br><br>
+
       <label for="file">파일 선택:</label>
-      <input type="file" id="file" name="file" required />
+      <input type="file" id="file" name="file" required /><br><br>
+
       <button type="submit">업로드</button>
    </form>
 
    <br>
 
-   <% if (typeof uploadedFile !=='undefined' ) {%>
-      <h2>업로드된 파일:</h2>
+   <% if (typeof uploadedFile !=='undefined' ) { %>
+      <h2>업로드된 파일 정보:</h2>
+      <p>제목: <%= uploadedFile.title %>
+      </p>
+      <p>내용: <%= uploadedFile.body %>
+      </p>
       <p>파일명: <%= uploadedFile.filename %>
       </p>
       <p>파일 경로: <%= uploadedFile.path %>
       </p>
 
       <h3>업로드된 이미지:</h3>
-      <img src="/uploads/<%= uploadedFile.filename %>" alt="">
+      <img src="/uploads/<%= uploadedFile.filename %>" alt="Uploaded Image" style="max-width: 500px;">
       <% } %>
 </body>
 
