@@ -1,0 +1,17 @@
+body {
+   background: #FFC1D5;
+   width: 100vw;
+   display: flex;
+   height: calc(var(--vh, 1vh)*100);
+   align-items: center;
+}
+
+main {
+   position: relative;
+   margin: 0 auto;
+   width: 360px;
+   height: 735px;
+   background-image: url(../src/img/mockup.png);
+   background-repeat: no-repeat;
+   background-size: 100%;
+}
