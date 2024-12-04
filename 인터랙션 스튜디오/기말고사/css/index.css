@@ -124,6 +124,43 @@ header img {
    margin-top: 7px;
 }
 
+
+.music-content {
+   position: absolute;
+
+   display: flex;
+   margin-top: 15px;
+   margin-left: -50px;
+}
+
+.music-content img {
+   width: 111px;
+}
+
+
+.music-title {
+   display: flex;
+   flex-direction: column;
+   margin-left: 20px;
+}
+
+.music-title img {
+   width: 63px;
+   height: 25px;
+   margin-top: 20px;
+}
+
+
+.music-played {
+   color: #FFDDFB;
+   font-size: 9px;
+}
+
+.music-info {
+   font-weight: 700;
+   font-size: 13px;
+}
+
 /* 푸터 */
 
 footer {
