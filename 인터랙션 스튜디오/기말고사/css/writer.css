@@ -34,6 +34,11 @@ main {
    height: 100%;
 }
 
+.goback img {
+   width: 25px;
+   margin-top: 10px;
+}
+
 /* 헤더 */
 
 header {
@@ -50,4 +55,44 @@ header img {
    font-size: 15px;
    font-weight: 700;
    margin-left: 20px;
+}
+
+/* book */
+
+.book-content {
+   margin-top: -10px;
+   overflow: scroll;
+}
+
+.book-content h1 {
+   padding-bottom: 20px;
+   border-bottom: 0.1px solid #fff;
+}
+
+.book-list {
+   display: flex;
+}
+
+.book {
+   display: flex;
+   flex-direction: column;
+   margin-right: 10px;
+}
+
+.book span {
+   font-size: 13px;
+   font-weight: 700;
+   margin-top: 7px;
+}
+
+.book-cover {
+   width: 130px;
+   height: 190px;
+   position: absolute;
+}
+
+.book-img {
+   width: 130px;
+   height: 190px;
+
 }
