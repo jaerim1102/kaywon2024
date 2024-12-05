@@ -85,10 +85,12 @@ header img {
 .phone-number {
    width: 73px;
    margin-bottom: 30px;
+   cursor: pointer;
 }
 
 .Eraser {
    margin-top: 20px;
    margin-left: 20px;
    width: 40px;
+   cursor: pointer;
 }
