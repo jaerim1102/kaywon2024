@@ -23,7 +23,11 @@
             <div class="photo-header">
                <img src="../src/photo-img/Swipe.png" alt="">
             </div>
-            <div class="photo-window"></div>
+            <div class="photo-window">
+               <video id="webcam" autoplay playsinline></video>
+               <canvas id="canvas" style="display: none;"></canvas>
+
+            </div>
             <div class="photo-footer">
                <img src="../src/photo-img/Zoom.png" alt="" class="zoom">
                <p>PHOTO</p>
@@ -33,7 +37,7 @@
       </div>
    </main>
    <script src="../js/clock.js"></script>
-
+   <script src="../js/photo.js"></script>
 
 </body>
 
