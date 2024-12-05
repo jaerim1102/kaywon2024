@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
    const numberFilter = document.querySelector(".number-filter");
    const phoneNumbers = document.querySelectorAll(".numbers img");
    const eraser = document.querySelector(".Eraser");
-   const phoneButton = document.querySelector(".phone-number[alt='Phone']"); // Phone 버튼 선택
+   const phoneButton = document.querySelector(".phone-number[alt='Phone']");
 
    // 초기 상태 설정
    inputWindow.textContent = "";
