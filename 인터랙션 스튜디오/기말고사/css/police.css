@@ -74,3 +74,21 @@ header img {
 .number-filter {
    color: #0A84FF;
 }
+
+.numbers {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   margin-left: 18px;
+   margin-top: 60px;
+}
+
+.phone-number {
+   width: 73px;
+   margin-bottom: 30px;
+}
+
+.Eraser {
+   margin-top: 20px;
+   margin-left: 20px;
+   width: 40px;
+}
