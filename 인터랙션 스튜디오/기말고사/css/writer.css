@@ -3,8 +3,9 @@ body {
    color: #fff;
    width: 100vw;
    display: flex;
-   height: calc(var(--vh, 1vh)*100);
+   height: calc(var(--vh, 1vh) * 100);
    align-items: center;
+   overflow-y: hidden;
    /* background-image: url(../src/img/bgi.jpg);
    background-size: cover; */
 }
@@ -30,7 +31,6 @@ main {
    position: relative;
    z-index: 2;
    padding: 16px 35px;
-
    height: 100%;
 }
 
@@ -61,7 +61,8 @@ header img {
 
 .book-content {
    margin-top: -10px;
-   overflow: scroll;
+   height: calc(100% - 120px);
+   /* Adjust height to fit within the container */
 }
 
 .book-content h1 {
@@ -69,15 +70,60 @@ header img {
    border-bottom: 0.1px solid #fff;
 }
 
+.book-content h2 {
+   margin-top: 60px;
+}
+
 .book-list {
    display: flex;
+   overflow-y: scroll;
+   -ms-overflow-style: none;
+}
+
+.book-list::-webkit-scrollbar {
+   display: none;
 }
 
 .book {
    display: flex;
    flex-direction: column;
    margin-right: 10px;
+   position: relative;
+   perspective: 1000px;
 }
+
+.book-inner {
+   position: relative;
+   width: 130px;
+   height: 190px;
+   transform-style: preserve-3d;
+   transition: transform 0.6s;
+}
+
+.book.flipped .book-inner {
+   transform: rotateY(180deg);
+}
+
+.book-front,
+.book-back {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   backface-visibility: hidden;
+   border-radius: 5px;
+}
+
+.book-front {
+   display: flex;
+   flex-direction: column;
+}
+
+.book-front span {
+   font-size: 13px;
+   font-weight: 700;
+   margin-top: 7px;
+}
+
 
 .book span {
    font-size: 13px;
@@ -89,10 +135,22 @@ header img {
    width: 130px;
    height: 190px;
    position: absolute;
+   top: 0;
+   left: 0;
+   z-index: 1;
 }
 
 .book-img {
    width: 130px;
    height: 190px;
+   z-index: 0;
+}
 
+.book-back {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background: #fff;
+   color: #000;
+   transform: rotateY(180deg);
 }

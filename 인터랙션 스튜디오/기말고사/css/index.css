@@ -5,6 +5,8 @@ body {
    display: flex;
    height: calc(var(--vh, 1vh)*100);
    align-items: center;
+   overflow-y: hidden;
+
    /* background-image: url(../src/img/bgi.jpg);
    background-size: cover; */
 }

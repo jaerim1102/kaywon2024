@@ -6,7 +6,6 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Book</title>
    <link rel="stylesheet" href="../css/writer.css">
-
 </head>
 
 <body>
@@ -21,12 +20,20 @@
          </div>
          <div class="book-content">
             <h1>Reading Now</h1>
-            <div class="book-list">
+            <div class="book-list" id="reading-now">
                <div class="book">
-                  <img src="../src/book-img/book-cover.png" class="book-cover">
-                  <img src="../src/book-img/1.jpg" class="book-img">
-                  <span>몰락의 에티카</span>
+                  <div class="book-inner">
+                     <div class="book-front">
+                        <img src="../src/book-img/book-cover.png" class="book-cover">
+                        <img src="../src/book-img/1.jpg" class="book-img">
+                        <span>몰락의 에티카</span>
+                     </div>
+                     <div class="book-back">
+                        <p>책 설명</p>
+                     </div>
+                  </div>
                </div>
+
                <div class="book">
                   <img src="../src/book-img/book-cover.png" class="book-cover">
                   <img src="../src/book-img/2.png" class="book-img">
@@ -37,12 +44,50 @@
                   <img src="../src/book-img/3.jpg" class="book-img">
                   <span>1Q84</span>
                </div>
+               <div class="book">
+                  <img src="../src/book-img/book-cover.png" class="book-cover">
+                  <img src="../src/book-img/4.jpeg" class="book-img">
+                  <span>이갈리아의 딸들</span>
+               </div>
+               <div class="book">
+                  <img src="../src/book-img/book-cover.png" class="book-cover">
+                  <img src="../src/book-img/5.jpeg" class="book-img">
+                  <span>네 이웃의 식탁</span>
+               </div>
+            </div>
+            <h2>Want to Read</h2>
+            <div class="book-list" id="want-to-read">
+               <div class="book">
+                  <img src="../src/book-img/book-cover.png" class="book-cover">
+                  <img src="../src/book-img/6.jpeg" class="book-img">
+                  <span>해가 지는 곳으로</span>
+               </div>
+               <div class="book">
+                  <img src="../src/book-img/book-cover.png" class="book-cover">
+                  <img src="../src/book-img/7.jpg" class="book-img">
+                  <span>우주에서 온 색채</span>
+               </div>
+               <div class="book">
+                  <img src="../src/book-img/book-cover.png" class="book-cover">
+                  <img src="../src/book-img/8.jpeg" class="book-img">
+                  <span>시선 과잉 사회</span>
+               </div>
+               <div class="book">
+                  <img src="../src/book-img/book-cover.png" class="book-cover">
+                  <img src="../src/book-img/9.png" class="book-img">
+                  <span>예루살렘의 아이히만</span>
+               </div>
+               <div class="book">
+                  <img src="../src/book-img/book-cover.png" class="book-cover">
+                  <img src="../src/book-img/10.jpg" class="book-img">
+                  <span>사랑하라 분노하라 용기 있게 싸워라</span>
+               </div>
             </div>
          </div>
       </div>
    </main>
    <script src="../js/clock.js"></script>
-
+   <script src="../js/book.js"></script>
 </body>
 
 </html>
