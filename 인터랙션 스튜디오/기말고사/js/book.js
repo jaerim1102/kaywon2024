@@ -1,11 +1,3 @@
-const books = document.querySelectorAll('.book');
-
-books.forEach(book => {
-      book.addEventListener('click', function () {
-            book.classList.toggle('flipped');
-      });
-});
-
 document.addEventListener('DOMContentLoaded', function () {
       const bookLists = document.querySelectorAll('.book-list');
 
@@ -22,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       books.forEach(book => {
             book.addEventListener('click', function () {
-                  book.classList.toggle('flipped');
+                  this.classList.toggle('flipped');
             });
       });
 });
