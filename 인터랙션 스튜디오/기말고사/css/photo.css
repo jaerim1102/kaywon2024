@@ -30,7 +30,7 @@ main {
 .mokup-inner {
    position: relative;
    z-index: 2;
-   padding: 16px 35px;
+   padding: 16px 5px;
    height: 100%;
 }
 
@@ -45,6 +45,7 @@ header {
    display: flex;
    align-items: center;
    justify-content: space-between;
+   padding: 0 35px;
 }
 
 header img {

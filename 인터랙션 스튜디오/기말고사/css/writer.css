@@ -6,6 +6,7 @@ body {
    height: calc(var(--vh, 1vh) * 100);
    align-items: center;
    overflow-y: hidden;
+   overflow-x: hidden;
    /* background-image: url(../src/img/bgi.jpg);
    background-size: cover; */
 }
