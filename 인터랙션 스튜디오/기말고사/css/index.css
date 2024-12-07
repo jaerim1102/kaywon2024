@@ -179,6 +179,7 @@ footer {
 .dock-content img {
    margin-left: 20px;
    width: 55px;
+   cursor: pointer;
 }
 
 .dock {
