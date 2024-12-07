@@ -134,3 +134,37 @@ header img {
    font-size: 13px;
    color: #555;
 }
+
+.guitar-popup {
+   position: fixed;
+   bottom: -100px;
+   opacity: 0;
+   transition: all 0.5s ease;
+   z-index: 1000;
+
+   width: 280px;
+   margin-top: 37px;
+   background: #3D3D3D;
+   border-radius: 25px;
+   display: flex;
+   padding-top: 15px;
+   padding: 10px;
+}
+
+.guitar-popup.active {
+   bottom: 170px;
+   /* 나타나는 위치 */
+   opacity: 1;
+}
+
+.guitar-popup img {
+   width: 50px;
+   height: 50px;
+   border-radius: 5px;
+   margin-top: 5px;
+   margin-left: 10px;
+}
+
+.guitar-popup p {
+   color: #939393;
+}
