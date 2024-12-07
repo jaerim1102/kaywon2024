@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Next</title>
+   <link rel="stylesheet" href="../css/next.css">
+
+</head>
+
+<body>
+
+   <main>
+      <div class="mokup-inner">
+         <header>
+            <div id="clock" class="clock">로딩 중</div>
+            <img src="../src/img/status-bar.png" alt="">
+         </header>
+         <div class="goback">
+            <a href="../index.html"><img src="../src/icon/goback.svg" alt=""></a>
+         </div>
+         <div class="memo-app">
+            <div class="memo-header">
+               <h1>Memo</h1>
+               <button id="addMemoBtn">New Memo</button>
+            </div>
+            <div class="memo-list" id="memoList"></div>
+         </div>
+
+         <div class="modal hidden" id="memoModal">
+            <div class="modal-content">
+               <textarea id="memoInput" placeholder="Write your memo here..."></textarea>
+               <button id="saveMemoBtn">Save</button>
+               <button id="cancelMemoBtn">Cancel</button>
+            </div>
+         </div>
+      </div>
+   </main>
+   <script src="../js/clock.js"></script>
+   <script src="../js/memo.js"></script>
+</body>
+
+</html>
