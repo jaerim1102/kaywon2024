@@ -34,19 +34,26 @@ router.get("/auth/register", (req, res) => {
    res.render("register");
 });
 
-// 회원가입 처리
 router.post("/auth/register", async (req, res) => {
    const { username, password } = req.body;
 
    try {
+      // 중복된 username 확인
+      const existingUser = await User.findOne({ username });
+      if (existingUser) {
+         return res.status(400).send("이미 사용 중인 사용자 이름입니다.");
+      }
+
+      // 새로운 사용자 저장
       const user = new User({ username, password });
       await user.save();
-      res.redirect("/auth/login");
+      res.redirect("/exhibitions/auth/login"); // 회원가입 후 로그인 페이지로 리디렉션
    } catch (error) {
       console.error(error);
       res.status(500).send("회원가입 중 오류가 발생했습니다.");
    }
 });
+
 
 // 로그인 페이지
 router.get("/auth/login", (req, res) => {
