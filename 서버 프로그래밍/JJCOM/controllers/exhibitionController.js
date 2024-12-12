@@ -9,7 +9,7 @@ const storage = multer.diskStorage({
    },
    filename: function (req, file, cb) {
       cb(null, Date.now() + path.extname(file.originalname));
-   }
+   },
 });
 const upload = multer({ storage: storage });
 
@@ -19,7 +19,36 @@ const getAllExhibitions = async (req, res) => {
       const exhibitions = await Exhibition.find();
       res.render("exhibitions", { exhibitions });
    } catch (error) {
-      res.status(500).send("서버 오류가 발생했습니다.");
+      console.error("전시 목록 오류:", error);
+      res.status(500).send("전시 목록을 불러오는 중 오류가 발생했습니다.");
+   }
+};
+
+// 전시 등록
+const createExhibition = async (req, res) => {
+   try {
+      const { exhibition_name, school, major, description, exhibition_location, start_date, end_date, exhibition_time, online_link, sns_link } = req.body;
+
+      const newExhibition = new Exhibition({
+         exhibition_name,
+         school,
+         major,
+         description,
+         exhibition_location,
+         start_date,
+         end_date,
+         exhibition_time,
+         online_link,
+         sns_link,
+         poster: req.file ? `/uploads/${req.file.filename}` : null,
+         createdBy: req.session.user.username,
+      });
+
+      await newExhibition.save();
+      res.redirect("/exhibitions");
+   } catch (error) {
+      console.error("전시 등록 오류:", error);
+      res.status(500).send("전시 등록 중 오류가 발생했습니다.");
    }
 };
 
@@ -32,7 +61,8 @@ const getExhibitionDetail = async (req, res) => {
       }
       res.render("exhibitionDetail", { exhibition });
    } catch (error) {
-      res.status(500).send("서버 오류가 발생했습니다.");
+      console.error("전시 상세 오류:", error);
+      res.status(500).send("전시 상세 정보를 불러오는 중 오류가 발생했습니다.");
    }
 };
 
@@ -45,70 +75,61 @@ const getExhibitionForEdit = async (req, res) => {
       }
       res.render("editExhibition", { exhibition });
    } catch (error) {
-      console.error("Error loading edit page:", error);
-      res.status(500).send("서버 오류가 발생했습니다.");
+      console.error("수정 페이지 오류:", error);
+      res.status(500).send("수정 페이지를 불러오는 중 오류가 발생했습니다.");
    }
 };
 
-// 전시 생성 함수
-const createExhibition = async (req, res) => {
-   try {
-      const newExhibition = new Exhibition({
-         school: req.body.school,
-         major: req.body.major,
-         exhibition_name: req.body.exhibition_name,
-         exhibition_location: req.body.exhibition_location,
-         start_date: req.body.start_date,
-         end_date: req.body.end_date,
-         exhibition_time: req.body.exhibition_time,
-         description: req.body.description,
-         poster: req.file ? "/uploads/" + req.file.filename : null
-      });
-
-      await newExhibition.save();
-      res.redirect("/exhibitions");
-   } catch (error) {
-      res.status(400).send("전시 등록에 실패했습니다.");
-   }
-};
-
-// 전시 수정 함수
+// 전시 수정
 const updateExhibition = async (req, res) => {
    try {
-      const updateData = {
-         school: req.body.school,
-         major: req.body.major,
-         exhibition_name: req.body.exhibition_name,
-         exhibition_location: req.body.exhibition_location,
-         start_date: req.body.start_date,
-         end_date: req.body.end_date,
-         exhibition_time: req.body.exhibition_time,
-         description: req.body.description,
-      };
-
-      if (req.file) {
-         updateData.poster = "/uploads/" + req.file.filename;
-      }
-
-      await Exhibition.findByIdAndUpdate(req.params.id, updateData);
-      res.redirect("/exhibitions"); // 수정 완료 후 전시 목록 페이지로 이동
-   } catch (error) {
-      res.status(500).send("전시 수정에 실패했습니다.");
-   }
-};
-
-// 전시 삭제 함수
-const deleteExhibition = async (req, res) => {
-   try {
-      const exhibition = await Exhibition.findByIdAndDelete(req.params.id);
+      const exhibition = await Exhibition.findById(req.params.id);
       if (!exhibition) {
          return res.status(404).send("전시를 찾을 수 없습니다.");
       }
-      res.status(200).json({ message: "전시가 삭제되었습니다." });
+
+      const isOwner = exhibition.createdBy === req.session.user.username;
+      const isAdmin = req.session.user.username === "test";
+
+      if (!isOwner && !isAdmin) {
+         return res.status(403).send("수정 권한이 없습니다.");
+      }
+
+      const updates = req.body;
+      if (req.file) {
+         updates.poster = `/uploads/${req.file.filename}`;
+      }
+
+      await Exhibition.findByIdAndUpdate(req.params.id, updates);
+      res.redirect("/exhibitions");
    } catch (error) {
-      res.status(500).send("서버 오류가 발생했습니다.");
+      console.error("전시 수정 오류:", error);
+      res.status(500).send("전시 수정 중 오류가 발생했습니다.");
    }
 };
+
+const deleteExhibition = async (req, res) => {
+   try {
+      const exhibition = await Exhibition.findById(req.params.id);
+      if (!exhibition) {
+         return res.status(404).json({ error: "전시를 찾을 수 없습니다." });
+      }
+
+      const isOwner = exhibition.createdBy === req.session.user.username;
+      const isAdmin = req.session.user.username === "test";
+
+      if (!isOwner && !isAdmin) {
+         return res.status(403).json({ error: "삭제 권한이 없습니다." });
+      }
+
+      await Exhibition.findByIdAndDelete(req.params.id);
+      res.status(200).json({ message: "삭제 성공" }); // 명확한 성공 응답
+   } catch (error) {
+      console.error("전시 삭제 오류:", error);
+      res.status(500).json({ error: "전시 삭제 중..." });
+   }
+};
+
 
 module.exports = {
    getAllExhibitions,
@@ -117,5 +138,5 @@ module.exports = {
    getExhibitionForEdit,
    updateExhibition,
    deleteExhibition,
-   upload
+   upload,
 };

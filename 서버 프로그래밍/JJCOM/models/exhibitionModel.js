@@ -11,7 +11,8 @@ const exhibitionSchema = new mongoose.Schema({
    description: { type: String, required: true },
    poster: { type: String }, // 포스터 경로 필드
    online_link: { type: String },
-   sns_link: { type: String }
+   sns_link: { type: String },
+   createdBy: { type: String, required: true }, // 등록한 사용자 정보 필드 추가
 });
 
 const Exhibition = mongoose.model("Exhibition", exhibitionSchema);

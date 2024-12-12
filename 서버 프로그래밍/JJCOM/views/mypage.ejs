@@ -1,0 +1,21 @@
+<%- include('partials/header', { title: "내 전시 목록" , cssFile: "mypage" }) %>
+
+   <h1>내가 등록한 전시</h1>
+   <div class="exhibition-list">
+      <% exhibitions.forEach(function(exhibition) { %>
+         <div class="exhibition-card">
+            <h2>
+               <%= exhibition.exhibition_name %>
+            </h2>
+            <p>학교: <%= exhibition.school %>
+            </p>
+            <p>학과: <%= exhibition.major %>
+            </p>
+            <p>등록자: <%= exhibition.createdBy %>
+            </p>
+            <a href="/exhibitions/<%= exhibition._id %>/detail">상세 보기</a>
+         </div>
+         <% }) %>
+   </div>
+
+   <%- include('partials/footer') %>
