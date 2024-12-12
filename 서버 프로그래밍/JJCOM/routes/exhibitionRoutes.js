@@ -4,60 +4,78 @@ const {
    getAllExhibitions,
    createExhibition,
    getExhibitionDetail,
-   getExhibitionForEdit, // 수정 페이지로 이동
+   getExhibitionForEdit,
    updateExhibition,
    deleteExhibition,
    upload,
 } = require("../controllers/exhibitionController");
 
-const User = require("../models/User"); // 사용자 모델
+const { ensureAuthenticated } = require("../middlewares/auth");
+const User = require("../models/User"); // User 모델 불러오기
 
-// 전시 목록 및 전시 생성
-router.route("/").get(getAllExhibitions).post(upload.single("poster"), createExhibition);
+// === 전시 관련 라우트 ===
+
+// 전시 목록 페이지
+router.get("/", getAllExhibitions);
+
+// 전시 등록 페이지 (로그인 필요)
+router.get("/register", ensureAuthenticated, (req, res) => {
+   res.render("exhibitionRegister", {
+      title: "전시 등록",
+      cssFile: "register",
+   });
+});
+
+// 전시 등록 처리 (로그인 필요)
+router.post("/", ensureAuthenticated, upload.single("poster"), createExhibition);
 
 // 전시 상세 페이지
 router.get("/:id/detail", getExhibitionDetail);
 
-// 수정 페이지로 이동
-router.get("/:id/edit", getExhibitionForEdit);
+// 전시 수정 페이지 (로그인 필요)
+router.get("/:id/edit", ensureAuthenticated, getExhibitionForEdit);
 
-// 전시 수정
-router.post("/:id", upload.single("poster"), updateExhibition);
+// 전시 수정 처리 (로그인 필요)
+router.post("/:id", ensureAuthenticated, upload.single("poster"), updateExhibition);
 
-// 전시 삭제
-router.delete("/:id", deleteExhibition);
+// 전시 삭제 처리 (로그인 필요)
+router.delete("/:id", ensureAuthenticated, deleteExhibition);
 
-// === 회원가입 및 로그인 라우트 추가 ===
+// === 회원가입 및 로그인/로그아웃 라우트 ===
 
 // 회원가입 페이지
 router.get("/auth/register", (req, res) => {
-   res.render("register");
+   res.render("register", {
+      title: "회원가입",
+      cssFile: "register",
+   });
 });
 
+// 회원가입 처리
 router.post("/auth/register", async (req, res) => {
    const { username, password } = req.body;
 
    try {
-      // 중복된 username 확인
       const existingUser = await User.findOne({ username });
       if (existingUser) {
          return res.status(400).send("이미 사용 중인 사용자 이름입니다.");
       }
 
-      // 새로운 사용자 저장
       const user = new User({ username, password });
       await user.save();
-      res.redirect("/exhibitions/auth/login"); // 회원가입 후 로그인 페이지로 리디렉션
+      res.redirect("/exhibitions/auth/login");
    } catch (error) {
-      console.error(error);
+      console.error("회원가입 오류:", error);
       res.status(500).send("회원가입 중 오류가 발생했습니다.");
    }
 });
 
-
 // 로그인 페이지
 router.get("/auth/login", (req, res) => {
-   res.render("login");
+   res.render("login", {
+      title: "로그인",
+      cssFile: "login",
+   });
 });
 
 // 로그인 처리
@@ -67,14 +85,22 @@ router.post("/auth/login", async (req, res) => {
    try {
       const user = await User.findOne({ username });
       if (user && (await user.comparePassword(password))) {
-         res.send("로그인 성공");
+         req.session.user = { username }; // 세션에 사용자 정보 저장
+         res.redirect("/exhibitions");
       } else {
          res.status(400).send("잘못된 사용자 이름 또는 비밀번호입니다.");
       }
    } catch (error) {
-      console.error(error);
+      console.error("로그인 오류:", error);
       res.status(500).send("로그인 중 오류가 발생했습니다.");
    }
+});
+
+// 로그아웃 처리
+router.get("/auth/logout", (req, res) => {
+   req.session.destroy(() => {
+      res.redirect("/");
+   });
 });
 
 module.exports = router;

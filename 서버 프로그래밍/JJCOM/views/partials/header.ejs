@@ -18,10 +18,16 @@
    <header>
       <nav>
          <ul>
-            <li><a href="/exhibition">전시 등록</a></li>
+            <li><a href="/exhibitions/register">전시 등록</a></li>
             <li><a href="/exhibitions">전시 목록</a></li>
-            <li><a href="/exhibitions/auth/register">회원가입</a></li>
-            <li><a href="/exhibitions/auth/login">로그인</a></li>
+            <% if (!session.user) { %> <!-- 로그인 상태가 아니면 표시 -->
+
+               <li><a href="/exhibitions/auth/register">회원가입</a></li>
+               <li><a href="/exhibitions/auth/login">로그인</a></li>
+               <% } else { %> <!-- 로그인 상태라면 표시 -->
+                  <li><strong>안녕하세요, <%= session.user.username %>님!</strong></li>
+                  <li><a href="/exhibitions/auth/logout">로그아웃</a></li>
+                  <% } %>
 
          </ul>
       </nav>

@@ -21,15 +21,18 @@
                <%= exhibition.exhibition_location %>
             </div>
             <div><strong>전시 일정</strong>
-               <%= exhibition.start_date.toLocaleDateString('ko-KR') %> ~ <%=
-                     exhibition.end_date.toLocaleDateString('ko-KR') %>
+               <%= exhibition.start_date.toLocaleDateString('ko-KR') %> ~
+                  <%= exhibition.end_date.toLocaleDateString('ko-KR') %>
             </div>
          </div>
       </div>
 
-      <!-- 수정 버튼 -->
-      <a href="/exhibitions/<%= exhibition._id %>/edit" class="edit-button">수정하기</a>
-      <a href="/exhibitions" class="back">뒤로가기</a>
+      <!-- 수정 버튼: 로그인한 사용자만 표시 -->
+      <% if (session.user) { %>
+         <a href="/exhibitions/<%= exhibition._id %>/edit" class="edit-button">수정하기</a>
+         <% } %>
+
+            <a href="/exhibitions" class="back">뒤로가기</a>
    </div>
 
    <%- include('partials/footer') %>
