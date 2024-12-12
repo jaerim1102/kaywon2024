@@ -7,8 +7,10 @@ const {
    getExhibitionForEdit, // 수정 페이지로 이동
    updateExhibition,
    deleteExhibition,
-   upload
+   upload,
 } = require("../controllers/exhibitionController");
+
+const User = require("../models/User"); // 사용자 모델
 
 // 전시 목록 및 전시 생성
 router.route("/").get(getAllExhibitions).post(upload.single("poster"), createExhibition);
@@ -24,5 +26,48 @@ router.post("/:id", upload.single("poster"), updateExhibition);
 
 // 전시 삭제
 router.delete("/:id", deleteExhibition);
+
+// === 회원가입 및 로그인 라우트 추가 ===
+
+// 회원가입 페이지
+router.get("/auth/register", (req, res) => {
+   res.render("register");
+});
+
+// 회원가입 처리
+router.post("/auth/register", async (req, res) => {
+   const { username, password } = req.body;
+
+   try {
+      const user = new User({ username, password });
+      await user.save();
+      res.redirect("/auth/login");
+   } catch (error) {
+      console.error(error);
+      res.status(500).send("회원가입 중 오류가 발생했습니다.");
+   }
+});
+
+// 로그인 페이지
+router.get("/auth/login", (req, res) => {
+   res.render("login");
+});
+
+// 로그인 처리
+router.post("/auth/login", async (req, res) => {
+   const { username, password } = req.body;
+
+   try {
+      const user = await User.findOne({ username });
+      if (user && (await user.comparePassword(password))) {
+         res.send("로그인 성공");
+      } else {
+         res.status(400).send("잘못된 사용자 이름 또는 비밀번호입니다.");
+      }
+   } catch (error) {
+      console.error(error);
+      res.status(500).send("로그인 중 오류가 발생했습니다.");
+   }
+});
 
 module.exports = router;

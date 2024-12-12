@@ -50,3 +50,10 @@ strong {
 .back {
    border-bottom: 1px solid #fff;
 }
+
+.edit-button {
+   background: #3A39FF;
+   border-radius: 20%;
+   border: none;
+   padding: 5px 10px 5px 10px;
+}

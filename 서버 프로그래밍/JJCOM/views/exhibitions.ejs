@@ -1,6 +1,9 @@
 <%- include('partials/header', { title: '전시 목록' , cssFile: 'exhibitions' }) %>
 
-   <h1>졸업 전시 리스트</h1>
+   <h1>전국의 모든<br />
+      졸업 전시를 만나 보세요.</h1>
+   <span>우리 학교, 우리 학과 졸업 전시가 없다면? <a href="/exhibition">전시 등록 바로가기</a></span>
+   <h2>졸업 전시 리스트</h2>
    <div class="exhibition-list">
       <% exhibitions.forEach(function(exhibition) { %>
          <div class="exhibition-card">
